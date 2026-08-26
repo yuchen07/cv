@@ -1,7 +1,7 @@
 # Personal homepage
 
 Source for my personal homepage — a static, dependency-free academic page
-published with GitHub Pages from the `yuchen` repository.
+published with GitHub Pages from the `cv` repository.
 
 ## Layout
 
