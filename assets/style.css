@@ -1,0 +1,283 @@
+/* ---------------------------------------------------------------
+   Academic minimal — Yuchen Wang
+   --------------------------------------------------------------- */
+
+:root {
+  --bg:        #ffffff;
+  --surface:   #fafaf9;
+  --ink:       #1c1c1e;
+  --ink-soft:  #46464a;
+  --muted:     #77777d;
+  --rule:      #e4e4e2;
+  --accent:    #34618f;
+  --accent-bg: #eef3f9;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --measure: 46rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #14161a;
+    --surface:   #1b1e23;
+    --ink:       #e8e8ea;
+    --ink-soft:  #c2c3c7;
+    --muted:     #8d8f96;
+    --rule:      #2c3037;
+    --accent:    #7fb3e8;
+    --accent-bg: #1c2733;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16.5px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s ease;
+}
+a:hover { border-bottom-color: currentColor; }
+
+/* --- Header ---------------------------------------------------- */
+
+header.site {
+  padding: 4.5rem 0 2.25rem;
+}
+
+h1.name {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 .1rem;
+}
+
+.name-cn {
+  font-size: .95rem;
+  color: var(--muted);
+  letter-spacing: .18em;
+  margin: 0 0 1.15rem;
+}
+
+.role {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1.03rem;
+}
+.role .org { color: var(--ink); font-weight: 500; }
+
+.contact {
+  margin: 1.1rem 0 0;
+  font-size: .95rem;
+  color: var(--muted);
+}
+.contact a { font-variant-numeric: tabular-nums; }
+
+nav.toc {
+  margin-top: 2rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1.4rem;
+  font-size: .88rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+nav.toc a { color: var(--muted); }
+nav.toc a:hover { color: var(--accent); }
+
+/* --- Sections -------------------------------------------------- */
+
+section { padding: 2.4rem 0 .4rem; }
+
+h2 {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  margin: 0 0 1.5rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.lede {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+.lede strong { color: var(--ink); font-weight: 600; }
+
+/* --- Interest tags --------------------------------------------- */
+
+ul.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+ul.tags li {
+  font-size: .88rem;
+  color: var(--ink-soft);
+  background: var(--accent-bg);
+  border-radius: 100px;
+  padding: .3rem .85rem;
+}
+
+/* --- Entry list (experience / education / projects) ------------ */
+
+.entries { margin: 0; }
+
+.entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 1.5rem;
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+.entry:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: .5rem; }
+
+.entry h3 {
+  grid-column: 1;
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.entry .where {
+  grid-column: 1;
+  margin: .12rem 0 0;
+  color: var(--ink-soft);
+  font-size: .96rem;
+}
+.entry .date {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--muted);
+  font-size: .87rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-top: .18rem;
+}
+.entry .note {
+  grid-column: 1 / -1;
+  margin: .7rem 0 0;
+  color: var(--ink-soft);
+  font-size: .96rem;
+}
+.entry ul {
+  grid-column: 1 / -1;
+  margin: .7rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+  font-size: .96rem;
+}
+.entry ul li { margin-bottom: .35rem; }
+.entry ul li:last-child { margin-bottom: 0; }
+.entry ul li::marker { color: var(--muted); }
+
+/* --- Theses ---------------------------------------------------- */
+
+.thesis {
+  padding-bottom: 1.15rem;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid var(--rule);
+}
+.thesis:last-child { border-bottom: 0; margin-bottom: 0; }
+.thesis h3 {
+  margin: 0 0 .2rem;
+  font-family: var(--serif);
+  font-size: 1.03rem;
+  font-weight: 600;
+  font-style: italic;
+}
+.thesis .kind {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .3rem;
+}
+.thesis p { margin: 0; color: var(--ink-soft); font-size: .96rem; }
+
+/* --- Contact --------------------------------------------------- */
+
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+}
+.contact-card p { margin: 0 0 .5rem; color: var(--ink-soft); font-size: .98rem; }
+.contact-card p:last-child { margin-bottom: 0; }
+
+/* --- Footer ---------------------------------------------------- */
+
+footer.site {
+  margin-top: 3rem;
+  padding: 1.4rem 0 3.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: .85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1rem;
+  justify-content: space-between;
+}
+
+/* --- Small screens --------------------------------------------- */
+
+@media (max-width: 34rem) {
+  body { font-size: 16px; }
+  header.site { padding-top: 3rem; }
+  .entry { grid-template-columns: 1fr; }
+  .entry .date { grid-column: 1; grid-row: auto; order: 3; padding-top: .3rem; }
+  .entry h3 { order: 1; }
+  .entry .where { order: 2; }
+  .entry .note, .entry ul { order: 4; }
+}
+
+/* --- Print ----------------------------------------------------- */
+
+@media print {
+  :root { --accent: #000; }
+  body { font-size: 10.5pt; color: #000; background: #fff; }
+  .wrap { max-width: none; padding: 0; }
+  nav.toc, footer.site { display: none; }
+  header.site { padding: 0 0 1rem; }
+  section { padding: 1rem 0 0; break-inside: auto; }
+  .entry, .thesis { break-inside: avoid; }
+  a { color: #000; border: 0; }
+  ul.tags li { background: none; padding: .1rem 0; }
+  ul.tags li::after { content: " ·"; }
+  ul.tags li:last-child::after { content: ""; }
+}
