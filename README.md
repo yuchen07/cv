@@ -1,7 +1,7 @@
 # Personal homepage
 
-Source for <https://USERNAME.github.io> — a static, dependency-free personal
-academic page.
+Source for my personal homepage — a static, dependency-free academic page
+published with GitHub Pages from the `yuchen` repository.
 
 ## Layout
 
